@@ -5,8 +5,8 @@
 -- Schedules the monitor Edge Function to run every hour.
 --
 -- Run AFTER deploying the monitor Edge Function to Supabase.
--- Replace [PROJECT_REF] with your actual Supabase project reference.
--- Replace [CRON_SECRET] with the secret you set in Edge Function env vars.
+-- Replace qjozqwsclgrzdbmbtphq with your actual Supabase project reference.
+-- Replace 4score-cron-x9k2mP7qLtNvRwJ4 with the secret you set in Edge Function env vars.
 -- ─────────────────────────────────────────────────────────────────────────────
 
 -- Enable required extensions
@@ -25,10 +25,10 @@ SELECT cron.schedule(
   '0 * * * *',                      -- every hour on the hour
   $$
     SELECT net.http_post(
-      url     := 'https://[PROJECT_REF].supabase.co/functions/v1/monitor',
+      url     := 'https://qjozqwsclgrzdbmbtphq.supabase.co/functions/v1/monitor',
       headers := jsonb_build_object(
         'Content-Type',  'application/json',
-        'Authorization', 'Bearer [CRON_SECRET]'
+        'Authorization', 'Bearer 4score-cron-x9k2mP7qLtNvRwJ4'
       ),
       body    := '{}'::jsonb
     );

@@ -120,7 +120,7 @@ router.get('/agent.json', (req, res) => {
 //   tools/list   — returns the tool manifest
 //   tools/call   — executes a tool by name
 
-router.post('/mcp', async (req, res) => {
+router.post('/', async (req, res) => {
   const { jsonrpc, id, method, params } = req.body || {};
 
   if (jsonrpc !== '2.0') {
